@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +24,58 @@
         </nav>
       </div>
     </header>
-    <main></main>
+    <main>
+      <section class="hero">
+        <div class="hero-contenido">
+          <h1>Combate el Virus con Vacunas</h1>
+          <p>
+            Protégete y cuida a tu familia. La vacunación ayuda a reducir el
+            riesgo de enfermar gravemente.
+          </p>
+          <ul class="hero-beneficios">
+            <li class="beneficio-proteccion">Mejor protección</li>
+            <li class="beneficio-seleccion">Vacunas seleccionadas</li>
+          </ul>
+        </div>
+
+        <div class="hero-imagen">
+          <img
+            src="imagenes/fotoHero.png"
+            alt="Profesional de salud con mascarilla sosteniendo una jeringa"
+          />
+        </div>
+
+        <div class="hero-agenda">
+          <h2>Agenda tus vacunaciones</h2>
+          <form class="formulario-vacunacion">
+            <div class="campo">
+              <label for="ubicacion">Ubicación</label>
+
+              <select id="ubicacion" name="ubicacion">
+                <option value="">Selecciona un centro</option>
+                <option value="centro-norte">Centro Norte</option>
+                <option value="centro-sur">Centro Sur</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="fecha">Fecha</label>
+              <input type="date" id="fecha" name="fecha" />
+            </div>
+
+            <div class="campo">
+              <label for="vacuna">Tipo de vacuna</label>
+
+              <select id="vacuna" name="vacuna">
+                <option value="">Seleccione una vacuna</option>
+                <option value="sinovac">Sinovac</option>
+                <option value="moderna">Moderna</option>
+              </select>
+            </div>
+
+            <button type="submit" class="boton-enviar">Enviar</button>
+          </form>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

@@ -14,7 +14,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  max-width: 1500px;
+  max-width: 1600px;
   margin-inline: auto;
   gap: 2rem;
   min-height: 140px;
@@ -70,6 +70,142 @@ body {
   );
 }
 
+.hero {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-contenido {
+  padding: 4rem;
+}
+
+.hero-contenido h1 {
+  font-size: 3.5rem;
+  color: #1f3e72;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+}
+
+.hero-contenido p {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  color: #71809b;
+  max-width: 35rem;
+}
+
+.hero-beneficios {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  flex-wrap: wrap;
+}
+
+.hero-beneficios li {
+  color: #1f3e72;
+  font-weight: 600;
+}
+
+.hero-beneficios li::before {
+  display: inline-block;
+  color: #ffc400;
+  background-color: #fffae5;
+  padding: 0.4rem;
+  margin-right: 0.5rem;
+  border: 4px solid #fdfdfc;
+}
+
+.hero-beneficios .beneficio-proteccion::before {
+  content: "🛡";
+}
+
+.hero-beneficios .beneficio-seleccion::before {
+  content: "★";
+}
+
+.hero-imagen {
+  background: linear-gradient(to right, #0aa2df, #3353d1);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.hero-imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.hero-agenda {
+  grid-column: 1 / -1;
+  padding: 2rem;
+}
+
+.formulario-vacunacion {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  align-items: end;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(51, 83, 209, 0.25);
+}
+
+.hero-agenda h2 {
+  color: #1f3e72;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.campo select,
+.campo input {
+  font: inherit;
+  color: #1f3e72;
+  font-weight: 600;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dce4f5;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.campo label {
+  color: #71809b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.boton-enviar {
+  font: inherit;
+  border: none;
+  cursor: pointer;
+  background-color: #3353d1;
+  color: white;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 8px 16px rgba(51, 83, 209, 0.25);
+}
+
+.boton-enviar:hover {
+  background-color: #20358a;
+}
+
+.boton-enviar:focus-visible {
+  outline: 3px solid #2a44ac;
+  outline-offset: 4px;
+}
+
 @media (max-width: 1120px) {
   .header-contenido {
     flex-direction: column;
@@ -80,5 +216,65 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-contenido {
+    padding: 2rem;
+  }
+
+  .hero-contenido h1 {
+    font-size: 2.5rem;
+  }
+  .hero-beneficios {
+    gap: 1rem 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-contenido {
+    grid-column: 1;
+    grid-row: 1;
+    padding-bottom: 20rem;
+    padding: 6rem 4rem 20rem 8rem;
+  }
+
+  .hero-imagen {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .hero-agenda {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    align-self: end;
+    z-index: 1;
+    padding: 0;
+    margin: 0 4rem 3rem 8rem;
+    max-width: 70rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .formulario-vacunacion {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .formulario-vacunacion {
+    grid-template-columns: 1fr;
+  }
+  .hero-agenda {
+    padding: 2rem 1rem;
+  }
+
+  .formulario-vacunacion {
+    padding: 1.5rem 1rem;
   }
 }
