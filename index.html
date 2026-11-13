@@ -15,7 +15,23 @@
       <div class="header-contenido">
         <a class="logo" href="/">Vacunación</a>
 
-        <nav class="navegacion" aria-label="Navegación principal">
+        <button
+          class="menu-boton"
+          type="button"
+          aria-label="Abrir menú"
+          aria-controls="menu-principal"
+          aria-expanded="false"
+          hidden
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav
+          id="menu-principal"
+          class="navegacion"
+          aria-label="Navegación principal"
+        >
           <a href="#base-de-datos">Base de datos</a>
           <a href="#educacion">Educación</a>
           <a href="#noticias">Noticias</a>
@@ -46,27 +62,51 @@
         </div>
 
         <div class="hero-agenda">
-          <h2>Agenda tus vacunaciones</h2>
+          <h2>
+            <img class="agenda-icono" src="imagenes/icono-reloj.png" alt="" />
+            Agenda tus vacunaciones
+          </h2>
           <form class="formulario-vacunacion">
             <div class="campo">
-              <label for="ubicacion">Ubicación</label>
+              <label for="ubicacion">
+                <img
+                  class="agenda-icono"
+                  src="imagenes/icono-ubicacion.png"
+                  alt=""
+                />
+                Ubicación
+              </label>
 
               <select id="ubicacion" name="ubicacion">
-                <option value="">Selecciona un centro</option>
+                <option value="">Elige un centro</option>
                 <option value="centro-norte">Centro Norte</option>
                 <option value="centro-sur">Centro Sur</option>
               </select>
             </div>
             <div class="campo">
-              <label for="fecha">Fecha</label>
+              <label for="fecha">
+                <img
+                  class="agenda-icono"
+                  src="imagenes/icono-calendario.png"
+                  alt=""
+                />
+                Fecha
+              </label>
               <input type="date" id="fecha" name="fecha" />
             </div>
 
             <div class="campo">
-              <label for="vacuna">Tipo de vacuna</label>
+              <label for="vacuna">
+                <img
+                  class="agenda-icono"
+                  src="imagenes/icono-pluma.png"
+                  alt=""
+                />
+                Tipo de vacuna
+              </label>
 
               <select id="vacuna" name="vacuna">
-                <option value="">Seleccione una vacuna</option>
+                <option value="">Elige una vacuna</option>
                 <option value="sinovac">Sinovac</option>
                 <option value="moderna">Moderna</option>
               </select>
@@ -415,5 +455,50 @@
         </div>
       </div>
     </footer>
+    <script>
+      const botonMenu = document.querySelector(".menu-boton");
+      const menu = document.getElementById("menu-principal");
+      const pantallaCompacta = window.matchMedia("(max-width: 1120px)");
+
+      function mostrarMenu(abierto) {
+        botonMenu.setAttribute("aria-expanded", String(abierto));
+        botonMenu.setAttribute(
+          "aria-label",
+          abierto ? "Cerrar menú" : "Abrir menú",
+        );
+      }
+
+      botonMenu.addEventListener("click", () => {
+        mostrarMenu(botonMenu.getAttribute("aria-expanded") !== "true");
+      });
+
+      document.addEventListener("click", (evento) => {
+        if (
+          !pantallaCompacta.matches ||
+          botonMenu.getAttribute("aria-expanded") !== "true" ||
+          botonMenu.contains(evento.target)
+        ) {
+          return;
+        }
+
+        mostrarMenu(false);
+        if (menu.contains(document.activeElement)) {
+          botonMenu.focus({ preventScroll: true });
+        }
+      });
+
+      document.addEventListener("keydown", (evento) => {
+        if (
+          evento.key === "Escape" &&
+          botonMenu.getAttribute("aria-expanded") === "true"
+        ) {
+          mostrarMenu(false);
+          botonMenu.focus();
+        }
+      });
+
+      pantallaCompacta.addEventListener("change", () => mostrarMenu(false));
+      botonMenu.hidden = false;
+    </script>
   </body>
 </html>
